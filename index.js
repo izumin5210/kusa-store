@@ -13,7 +13,7 @@ const githubUsername = "izumin5210";
 
 const uploadToS3 = body => {
   const key = `${moment().format("YYYYMMDDThhmmssSSS")}.json`;
-  return s3bucket.upload({ Key: key, Body: body }).promise();
+  return s3bucket.putObject({ Key: key, Body: JSON.stringify(body) }).promise();
 };
 
 const fetchKusa = username => {
