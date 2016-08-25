@@ -23,7 +23,7 @@ const fetchKusa = username => {
       const body = $(graphSelector).map((_i, e) => {
         return { date: $(e).data("date"), count: $(e).data("count") };
       }).get();
-      return Promise.resove(body);
+      return Promise.resolve(body);
     });
 };
 
