@@ -3,15 +3,186 @@ env:
   node: true
 extends: 'eslint:recommended'
 rules:
+  # Best Practice: http://eslint.org/docs/rules/#best-practices
+  array-callback-return: error
+  block-scoped-var: error
+  complexity:
+    - warn
+    - 5
+  consistent-return: warn
+  curly:
+    - error
+    - all
+  default-case: error
+  dot-location:
+    - error
+    - property
+  dot-notation: error
+  eqeqeq:
+    - error
+    - smart
+  no-empty-function: warn
+  no-eq-null: error
+  no-global-assign: warn
+  no-implicit-coercion:
+    - warn
+    - allow:
+      - "!!"
+      - "~"
+  no-implicit-globals: warn
+  no-implied-eval: warn
+  no-invalid-this: warn
+  no-labels: warn
+  no-lone-blocks: warn
+  no-loop-func: warn
+  no-magic-numbers: warn
+  no-multi-spaces:
+    - warn
+    - exceptions:
+        Property: true
+        VariableDeclarator: true
+        ImportDeclaration: true
+  no-multi-str: warn
+  no-new-func: warn
+  no-new-wrappers: warn
+  no-new: warn
+  no-return-assign: warn
+  no-script-url: warn
+  no-self-compare: warn
+  no-sequences: warn
+  no-throw-literal: warn
+  no-unmodified-loop-condition: warn
+  no-unused-expressions: warn
+  no-useless-call: warn
+  no-useless-concat: warn
+  no-useless-escape: warn
+  no-void: warn
+  wrap-iife: warn
+  yoda: warn
+
+  # Variables: http://eslint.org/docs/rules/#variables
+  no-shadow:
+    - warn
+    - builtinGlobals: true
+      allow:
+        - resolve
+        - reject
+        - done
+        - cb
+        - res
+        - data
+        - e
+        - err
+  no-undef-init: warn
+  no-use-before-define: warn
+
+  # Stylistic Issues: http://eslint.org/docs/rules/#stylistic-issues
+  brace-style:
+    - error
+    - 1tbs
+    - allowSingleLine: true
+  camelcase:
+    - error
+    - properties: always
+  comma-style:
+    - error
+    - last
+  consistent-this:
+    - error
+    - DO NOT USE
   indent:
     - error
     - 2
+  key-spacing:
+    - error
+    - afterColon: true
+      align: colon
+  keyword-spacing:
+    - error
+    - before: true
+      after: true
   linebreak-style:
     - error
     - unix
+  max-depth:
+    - warn
+    - 3
+  max-len:
+    - warn
+    - 100
+  max-nested-callbacks:
+    - warn
+    - 3
+  max-params:
+    - warn
+    - 5
+  new-parens: warn
+  no-lonely-if: warn
+  no-multiple-empty-lines:
+    - error
+    - max: 1
+  no-nested-ternary: error
+  no-new-object: error
+  no-trailing-spaces: error
+  no-unneeded-ternary: error
+  no-whitespace-before-property: error
+  object-curly-spacing:
+    - error
+    - always
+  object-property-newline:
+    - error
+    - allowMultiplePropertiesPerLine: true
+  operator-linebreak:
+    - error
+    - before
   quotes:
     - error
     - double
   semi:
     - error
     - always
+  space-before-blocks: error
+  space-before-function-paren:
+    - error
+    - anonymous: always
+      named: never
+  space-infix-ops: error
+  spaced-comment:
+    - error
+    - always
+    - exceptions:
+        - '-'
+        - '+'
+        - '='
+        - '*'
+  unicode-bom: error
+
+  # ECMAScript 6: http://eslint.org/docs/rules/#ecmascript-6
+  arrow-parens:
+    - error
+    - as-needed
+  arrow-spacing:
+    - error
+    - before: true
+      after: true
+  generator-star-spacing:
+    - error
+    - before: true
+      after: false
+  no-confusing-arrow:
+    - error
+    - allowParens: true
+  no-duplicate-imports:
+    - error
+    - includeExports: true
+  no-useless-constructor: error
+  prefer-arrow-callback: error
+  prefer-template: error
+  template-curly-spacing:
+    - error
+    - never
+  yield-star-spacing:
+    - error
+    - before: true
+      after: false
+
