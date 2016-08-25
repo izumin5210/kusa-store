@@ -1,30 +1,26 @@
-var aws     = require('aws-sdk');
-var axios   = require('axios');
-var cheerio = require('cheerio');
-var moment  = require('moment');
+const AWS     = require('aws-sdk');
+const axios   = require('axios');
+const cheerio = require('cheerio');
+const moment  = require('moment');
 
-aws.config.region = 'ap-northeast-1';
-var bucketName = 'kusa-store';
-var s3bucket = new aws.S3({ params: { Bucket: bucketName }});
+AWS.config.region = 'ap-northeast-1';
+const bucketName = 'kusa-store';
+const s3bucket = new AWS.S3({ params: { Bucket: bucketName }});
 
-exports.handler = function(event, context) {
+const graphSelector = '.js-calendar-graph-svg rect'
+
+exports.handler = (event, context) => {
   axios.get('https://github.com/izumin5210')
-    .then(function (res) {
-      var key = moment().format('YYYYMMDDThhmmssSSS') + ".json";
-      var $ = cheerio.load(res.data);
-      var body =
-        $('.js-calendar-graph-svg rect').map(function(_i, el) {
-          return { date: $(el).data('date'), count: $(el).data('count') };
-        }).get();
-      s3bucket.upload({ Key: key, Body: body }, function(err, data) {
-        if (err) {
-          context.fail('Error uploading data: ', err);
-        } else {
-          context.succeed('Successfully uploaded data to myBucket/myKey');
-        }
-      });
+    .then(res => {
+      const key = `${moment().format('YYYYMMDDThhmmssSSS')}.json`;
+      const $ = cheerio.load(res.data);
+      const body = $(graphSelector).map((_i, e) => { date: $(e).data('date'), count: $(e).data('count') }).get();
+      return s3bucket.putObject({ Key: key, Body: body });
     })
-  .catch(function (err) {
-    context.fail('Error fetching data: ', err);
-  });
+    .then(data => {
+      context.succeed('Successfully uploaded data to myBucket/myKey');
+    })
+    .catch(err => {
+      context.fail(`Error fetching data: ${err}`);
+    });
 };
