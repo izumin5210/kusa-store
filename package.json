@@ -1,0 +1,24 @@
+{
+  "name": "kusa-store",
+  "description": "Scrape and store contributions count",
+  "version": "1.0.0",
+  "author": {
+    "name": "Masayuki IZUMI",
+    "email": "masayuki@izumin.info",
+    "url": "https://github.com/izumin5210"
+  },
+  "bugs": {
+    "url": "https://github.com/izumin5210/kusa-store/issues"
+  },
+  "homepage": "https://github.com/izumin5210/kusa-store#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izumin5210/kusa-store.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
