@@ -10,6 +10,11 @@
   "bugs": {
     "url": "https://github.com/izumin5210/kusa-store/issues"
   },
+  "dependencies": {
+    "axios": "^0.13.1",
+    "cheerio": "^0.22.0",
+    "moment": "^2.14.1"
+  },
   "homepage": "https://github.com/izumin5210/kusa-store#readme",
   "license": "ISC",
   "main": "index.js",
