@@ -17,7 +17,7 @@ exports.handler = (event, context) => {
       const body = $(graphSelector).map((_i, e) => {
         return { date: $(e).data("date"), count: $(e).data("count") };
       }).get();
-      return s3bucket.putObject({ Key: key, Body: body }).promise();
+      return s3bucket.upload({ Key: key, Body: body }).promise();
     })
     .then(() => {
       context.succeed("Successfully uploaded data to myBucket/myKey");
